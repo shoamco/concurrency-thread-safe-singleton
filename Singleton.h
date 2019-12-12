@@ -4,6 +4,8 @@
 
 #ifndef SINGLETONTHREADSAFE_SINGLETON_H
 #define SINGLETONTHREADSAFE_SINGLETON_H
+#include <unistd.h>
+#include <iostream>
 class Singleton{
 
     private:
