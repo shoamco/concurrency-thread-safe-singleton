@@ -1,7 +1,7 @@
 #include "TestSingleton.h"
 #include <pthread.h>
 
-#define NumThreads 10
+#define NumThreads 8
 
 void *test_singleton_without_thread(void *) {
     //new Singleton(); // Won't work
@@ -14,17 +14,11 @@ void *test_singleton_without_thread(void *) {
 }
 
 void *create_singleton(void *argv) {
-//    int i = (int*)(i);
     Singleton *s = Singleton::getInstance();
-    Singleton *r = Singleton::getInstance();
-//    std::cout << "thread " << i << std::endl;
     std::cout << s << std::endl;
-    std::cout << r << std::endl;
 }
 
-//typedef struct thread_data {
-//    int  thread_id;
-//}thread_data;
+
 void test_singleton_with_thread() {
     pthread_t threads[NumThreads];
     int i = 0;
