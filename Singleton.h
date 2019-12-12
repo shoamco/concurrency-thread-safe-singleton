@@ -10,7 +10,7 @@ class Singleton{
 
     private:
         /* Here will be the instance stored. */
-        static Singleton* instance;
+        static Singleton* volatile instance;
 
         /* Private constructor to prevent instancing. */
         Singleton();

@@ -1,8 +1,8 @@
 #include "Singleton.h"
 pthread_mutex_t lock;
- Singleton* Singleton::instance = 0;
+ Singleton* volatile Singleton::instance = 0;
 
- Singleton* Singleton::getInstance()
+ Singleton*  Singleton::getInstance()
 {
     sleep(2);
 
@@ -12,7 +12,11 @@ pthread_mutex_t lock;
         if (instance == 0) {
 
             std::cout << "\n*****new  Singleton****\n";
-            instance = new Singleton();
+//           instance = new Singleton();
+            Singleton* volatile temp = new Singleton; // initialize to temp
+            sleep(1);
+            instance = temp; // assign temp to pInstance
+
         }
         pthread_mutex_unlock(&lock);
     }
