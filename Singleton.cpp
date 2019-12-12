@@ -13,9 +13,13 @@ pthread_mutex_t lock;
 
             std::cout << "\n*****new  Singleton****\n";
 //           instance = new Singleton();
-            Singleton* volatile temp = new Singleton; // initialize to temp
+            Singleton* volatile temp;
+//            Singleton* volatile temp = new Singleton; // initialize to temp
+            __sync_fetch_and_or(&temp,new Singleton);
             sleep(1);
-            instance = temp; // assign temp to pInstance
+//            instance = temp; // assign temp to pInstance
+            __sync_fetch_and_or(&instance,temp);
+
 
         }
         pthread_mutex_unlock(&lock);
