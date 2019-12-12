@@ -19,21 +19,6 @@ class Singleton{
     };
 
 
-/* Null, because instance will be initialized on demand. */
-inline Singleton* Singleton::instance = 0;
-
-inline Singleton* Singleton::getInstance()
-{
-    if (instance == 0)
-    {
-        instance = new Singleton();
-    }
-
-    return instance;
-}
-
-inline Singleton::Singleton()
-{}
 //Singleton* Singleton::instance() {
 //    if (pInstance == 0) {
 //        Lock lock;

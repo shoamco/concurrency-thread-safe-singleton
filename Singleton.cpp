@@ -1,4 +1,15 @@
-//
-// Created by shoam on 12/12/19.
-//
+#include "Singleton.h"
+ Singleton* Singleton::instance = 0;
 
+ Singleton* Singleton::getInstance()
+{
+    if (instance == 0)
+    {
+        instance = new Singleton();
+    }
+
+    return instance;
+}
+
+ Singleton::Singleton()
+{}
